@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết sản phẩm - Chợ Tốt</title>
+<link rel="stylesheet" href="goods.css">
+<style>
+  /* ---- Chỉ bổ sung những gì CSS gốc chưa có, không đổi màu sắc ---- */
+
+  /* Badge PRO (cam) */
+  .badge-pro {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #e51937; color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 3px;
+    margin-bottom: 6px;
+  }
+
+  /* Khoảng giá thị trường */
+  .market-box {
+    margin-top: 12px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  /* Cột trái: tiêu đề + phụ đề xếp dọc */
+  .market-left-col {
+    flex-shrink: 0;
+  }
+  .market-box .market-title {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 13px; color: #222; font-weight: 600;
+    white-space: nowrap;
+    margin-bottom: 3px;
+  }
+  .market-box .info-i {
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1.5px solid #999; display: inline-grid;
+    place-items: center; font-size: 10px; color: #999; cursor: pointer;
+  }
+  .market-box .market-subtitle {
+    font-size: 11px; color: #999;
+    white-space: nowrap;
+  }
+  /* Cột phải: thanh bar + số, chiếm phần còn lại */
+  .market-right-col {
+    flex: 1;
+    min-width: 0;
+    max-width: 320px;
+  }
+  .market-bar-wrap {
+    position: relative;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    margin-top: 14px;
+    margin-bottom: 32px;
+  }
+  /* Xanh chỉ từ 16,91tr→20,67tr. Giả sử tổng range thanh là 14tr→25,4tr (span=11,4tr)
+     left  = (16.91-14)/11.4 = 25.5%
+     width = (20.67-16.91)/11.4 = 33%  */
+  .market-bar-fill {
+    display: block;
+    position: absolute;
+    left: 25.5%;
+    width: 33%;
+    top: 0; height: 100%;
+    background: #1a73e8; border-radius: 2px;
+  }
+  /* Thumb "20 tr" nằm tại vị trí 20tr = (20-14)/11.4 = 52.6% */
+  .market-bar-thumb {
+    position: absolute; left: 52.6%; top: 0;
+    transform: translate(-50%, calc(-100% - 6px));
+    background: #1a73e8; border-radius: 4px;
+    padding: 2px 7px;
+    color: #fff; font-size: 11px; font-weight: 700;
+    white-space: nowrap;
+  }
+  .market-bar-thumb::after {
+    content: '';
+    position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #1a73e8;
+  }
+  /* 2 số 16,91tr và 20,67tr canh dưới 2 đầu mút xanh */
+  .market-range {
+    position: absolute;
+    top: 8px;
+    left: 0; right: 0;
+    pointer-events: none;
+    height: 0;
+  }
+  .market-range .r-left {
+    position: absolute;
+    left: 25.5%;
+    transform: translateX(-50%);
+    font-size: 10px; color: #777; text-align: center;
+    white-space: nowrap;
+    font-weight: 500;
+    display: inline-flex; align-items: baseline; gap: 1px;
+  }
+  .market-range .r-right {
+    position: absolute;
+    left: 58.5%;
+    transform: translateX(-50%);
+    font-size: 10px; color: #777; text-align: center;
+    white-space: nowrap;
+    font-weight: 500;
+    display: inline-flex; align-items: baseline; gap: 1px;
+  }
+
+  /* Right column: seller + comment stacked, total height matches left */
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* comment-box chiều cao tự nhiên (không min-height cứng) */
+  .right-column .comment-box {
+    min-height: unset;
+    flex: 1;
+  }
+
+  /* Seller card redesign (giữ màu gốc, bố cục mới) */
+  .seller-card-v2 {
+    margin: 0;
+  }
+  .seller-card-v2 .sc-top {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .seller-card-v2 .sc-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0; background: #ddd;
+  }
+  .seller-card-v2 .sc-meta { flex: 1; min-width: 0; }
+  .seller-card-v2 .sc-meta h3 {
+    font-size: 13px; font-weight: 700; margin-bottom: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .seller-card-v2 .sc-meta p { font-size: 11px; color: #777; }
+  .seller-card-v2 .sc-rating {
+    font-size: 11px; color: #777; margin-top: 2px;
+    display: flex; align-items: center; gap: 3px;
+  }
+  .seller-card-v2 .sc-rating .stars { color: #ffaa00; }
+  .sc-stats {
+    display: flex; align-items: stretch;
+    border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+  }
+  .sc-stats .sc-stat {
+    flex: 1; text-align: center; padding: 8px 0;
+  }
+  .sc-stats .sc-stat strong { display: block; font-size: 14px; color: #222; }
+  .sc-stats .sc-stat span { font-size: 11px; color: #777; }
+  .sc-stats .sc-divider { width: 1px; background: #eee; margin: 8px 0; }
+  .sc-actions { display: flex; gap: 8px; }
+  .sc-actions .btn-view-shop {
+    flex: 1; height: 32px; border: 1px solid #ddd;
+    border-radius: 16px; font-size: 12px; font-weight: 700; color: #333;
+    background: #fff;
+  }
+  .sc-actions .btn-chat-now {
+    flex: 1; height: 32px; background: #ffcc00;
+    border-radius: 16px; font-size: 12px; font-weight: 700; color: #111;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .sc-actions .btn-chat-now img { width: 14px; height: 14px; }
+
+  /* Thu hẹp khung nội dung */
+  .page { max-width: 1000px !important; }
+  .breadcrumb-inner { max-width: 1000px !important; }
+.specs-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
+
+.specs-2col .spec-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+  gap: 0;
+  margin: 0 8px;  /* đã fix lần trước */
+}
+
+/* Cột trái (odd): thêm border phân cách giữa 2 cột */
+.specs-2col .spec-row:nth-child(odd) {
+  border-right: 1px solid #eee;
+  padding-right: 24px;
+}
+
+.specs-2col .spec-row span {
+  color: #777;
+  font-size: 13px;
+  flex-shrink: 0;
+  width: 160px;  /* ← giảm từ 200px xuống để value không bị đẩy xa */
+}
+  /* Show more button */
+  .show-more-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 13px; color: #555; font-weight: 600;
+    background: none; border: none; cursor: pointer;
+    padding: 10px 0 2px;
+    width: 100%;
+  }
+  .show-more-btn .arrow-icon {
+    width: 16px; height: 16px;
+    border: 1.5px solid #888; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #888; flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .show-more-btn.expanded .arrow-icon { transform: rotate(180deg); }
+
+  /* Desc content collapsible */
+  .desc-collapsible {
+    overflow: hidden;
+    position: relative;
+  }
+  .desc-collapsible.collapsed {
+    max-height: 158px;
+  }
+  .desc-collapsible.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    pointer-events: none;
+  }
+  .desc-collapsible.expanded {
+    max-height: 2000px;
+    transition: max-height 0.3s ease;
+  }
+
+  /* Divider above show-more */
+  .show-more-divider {
+    border: none; border-top: 1px solid #eee;
+    margin: 12px 0 0;
+  }
+
+  /* Tabs */
+  .tab-bar {
+    display: flex; border-bottom: 2px solid #eee;
+    margin-bottom: 16px; overflow-x: auto;
+  }
+  .tab-btn {
+    height: 40px; padding: 0 18px;
+    font-size: 13px; font-weight: 600; color: #777;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    white-space: nowrap; background: none; cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  .tab-btn.active { color: #e51937; border-bottom-color: #e51937; }
+  .tab-btn:hover:not(.active) { color: #333; }
+
+  /* section heading cho shop-tin */
+  .shop-heading { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+  .shop-heading a { color: #e51937; }
+
+  /* ===== FIX CONTACT BUTTONS ===== */
+  /* Đảm bảo flex + gap hoạt động đúng, icon inline với text */
+  .contact-buttons {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    flex-wrap: nowrap !important;
+  }
+  .contact-buttons button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    min-height: 40px !important;
+    flex: 1 !important;
+  }
+  .contact-buttons button img {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  /* Màu từng nút */
+  .contact-buttons .btn-phone {
+    background: #f0f0f0 !important;
+    color: #222 !important;
+    border: 1px solid #ccc !important;
+  }
+  .contact-buttons .btn-chat {
+    background: #ffcc00 !important;
+    color: #111 !important;
+    border: none !important;
+  }
+  .contact-buttons .btn-zalo {
+    background: #0068ff !important;
+    color: #fff !important;
+    border: none !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+  <div class="header-left">
+    <div class="menu-icon">☰</div>
+    <a class="logo" href="#"><img src="images/logo_chotot.jpg" alt="Chợ Tốt"></a>
+    <button class="area-btn">
+      <img src="images/good_icon_location.svg" alt="" style="width:14px;height:14px;">
+      Chọn khu vực
+      <span class="arrow">▼</span>
+    </button>
+  </div>
+
+  <div class="search-box" style="flex:1;max-width:900px;">
+    <img src="images/icon_search_grey.png" alt="">
+    <input type="text" placeholder="Tìm sản phẩm...">
+  </div>
+
+  <div class="header-actions" style="gap:20px;">
+    <button><img src="images/icon_love_header.png" alt=""></button>
+    <button><img src="images/icon_bell.png" alt=""></button>
+    <button class="contact-btn"><img src="images/icon_chat.png" alt=""> Quản lý tin</button>
+    <button class="post-btn">Đăng tin</button>
+    <button class="user-btn"><img src="images/icon_user.png" alt=""></button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner page">
+    Chợ Tốt / Tủ lạnh / Tủ lạnh Tp Hồ Chí Minh / Tủ lạnh Quận 7 / 
+    <strong>Tủ lạnh Samsung 655L đã qua sử dụng</strong>
+  </div>
+</div>
+
+<main class="page">
+
+  <!-- PRODUCT HERO: khung trắng đầu tiên (gallery trái + product-info phải) -->
+  <section class="product-hero">
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="main-photo">
+        <img src="images/product-thumb-1.svg" alt="">
+        <button class="gallery-nav gallery-nav--right"><img src="images/icon_arrow_right.svg" alt=""></button>
+        <div class="photo-count">1/3</div>
+        <div class="photo-tools">
+          <button><img src="images/btn_share.svg" alt=""></button>
+          <button><img src="images/btn_chitiet.svg" alt=""></button>
+        </div>
+      </div>
+      <div class="thumb-list">
+        <button class="thumb active"><img src="images/product-thumb-1.svg" alt=""></button>
+        <button class="thumb"><img src="images/product-thumb-2.svg" alt=""></button>
+        <button class="thumb"><img src="images/product-thumb-3.svg" alt=""></button>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <div class="title-row">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <h1 style="margin:0;">Tủ lạnh Samsung 655L đã qua sử dụng</h1>
+          </div>
+          
+          <p class="meta">Đã sử dụng · > 500 lít</p>
+                <p class="price">8.000.000 đ</p>
+
+        </div>
+        <button class="save-btn"><img src="images/icon_love_header.png" alt=""> Lưu</button>
+      </div>
+      <div class="address">
+        <img src="images/icon_location.svg" alt="">
+        <span style="color:#444;font-weight:500;">Hẻm 502/55 Đường Huỳnh Tấn Phát<br><small style="color:#777;font-weight:400;">(Phường Tân Thuận, TP Hồ Chí Minh mới)</small></span>
+      </div>
+      <div class="time"><img src="images/icon_time.svg" alt=""> <span style="color:#444;font-weight:500;">Cập nhật 25 ngày trước</span></div>
+
+      <div class="market-box">
+        <div class="market-left-col">
+          <div class="market-title">
+            <strong>Khoảng giá thị trường</strong> <span class="info-i" style="font-weight:700;border-width:2px;border-color:#555;color:#555;">i</span>
+          </div>
+          <div class="market-subtitle">Theo dữ liệu trong 3 tháng gần nhất</div>
+        </div>
+        <div class="market-right-col">
+          <div class="market-bar-wrap">
+            <div class="market-bar-fill"></div>
+            <div class="market-bar-thumb">8 tr</div>
+            <div class="market-range">
+              <span class="r-left">7 tr</span>
+              <span class="r-right">9.5 tr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="contact-buttons">
+        <button class="btn-phone" data-full-phone="0356191234"><img src="images/seller_phone.svg" alt="">  Hiện số 035619xxx </button>
+        <button class="btn-chat"><img src="images/seller_chat_black.svg" alt=""> Chat ngay</button>
+        <button class="btn-zalo">Chat Zalo</button>
+    </div>
+
+      <div class="offer-box">
+        <h3>Deal giá</h3>
+        <div class="offer-input" style="position:relative;display:flex;align-items:center;">
+          <div style="position:relative;flex:1;display:flex;align-items:center;">
+            <input type="text" id="offer-input-field" placeholder=" " style="width:100%;box-sizing:border-box;padding-right:24px;">
+            <span style="position:absolute;left:13px;font-size:13px;color:#555;pointer-events:none;user-select:none;white-space:nowrap;">Nhập giá bạn mong muốn<span style="color:#e51937;margin-left:1px;">*</span></span>
+            <span style="position:absolute;right:8px;font-size:13px;color:#777;pointer-events:none;user-select:none;">đ</span>
+          </div>
+          <button>Trả giá</button>
+        </div>
+        <p>Giá gốc: 8.000.000 đ</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- DƯỚI HERO: Seller (trái) + Bình luận (phải) -->
+  <div class="seller-comment-row" style="display:grid !important; grid-template-columns: 2fr 1fr !important; gap:12px; margin-top:12px; margin-bottom:12px; align-items:stretch;">
+
+    <!-- Seller card -->
+    <div class="box seller-card-v2">
+      <!-- Hàng 1: avatar + tên + meta ngang -->
+      <div class="sc-top">
+        <div style="position:relative;flex-shrink:0;">
+          <img class="sc-avatar" src="images/goods_avatar.svg" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;">
+          <span style="position:absolute;bottom:-4px;right:-4px;width:18px;height:18px;background:#ffcc00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#111;border:2px solid #fff;">+</span>
+        </div>
+        <div class="sc-meta" style="flex:1;min-width:0;">
+          <h3 style="font-size:13px;font-weight:700;margin-bottom:3px;">Đào Phương Nam </h3>
+          <div style="display:flex;align-items:center;gap:12px;font-size:11px;color:#777;flex-wrap:wrap;">
+            <span>● Hoạt động 2 giờ trước</span>
+            <span>Phản hồi: 92%</span>
+            <span>Tham gia: 2 năm trước</span>
+          </div>
+          <!-- Stats ngang -->
+          <div style="display:flex;align-items:center;gap:16px;margin-top:6px;font-size:12px;color:#222;flex-wrap:wrap;">
+            <div class="menu-icon">★ <span><strong>0</strong> (0 đánh giá)</span></div>
+            
+             <span>Đã bán <strong>0</strong></span> 
+            <span>Sản phẩm <strong>2</strong></span>
+            <span>Người theo dõi <strong>0</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàng 2: nút Xem trang + Chat ngay -->
+      <div class="sc-actions" style="margin-top:10px;justify-content:flex-start;gap:8px;padding-left:66px;">
+        <button class="btn-shop"><img src="images/goods_seller_shop.svg" alt=""> Xem trang</button>
+
+      </div>
+
+
+    </div>
+
+    <!-- Bình luận -->
+    <aside class="comment-box">
+      <h2>Bình luận</h2>
+      <div class="empty-comment">
+        <img src="images/icon-comment-empty.svg" alt="">
+        <p>Chưa có bình luận nào.<br>Hãy để lại bình luận cho người bán.</p>
+      </div>
+      <div class="comment-input">
+        <input type="text" placeholder="Bình luận...">
+        <button><img src="images/icon-send.svg" alt=""></button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Thông tin chi tiết + Mô tả (full width dưới seller+comment) -->
+  <div class="detail-column">
+
+<!-- HTML -->
+    <section class="box specs">
+      <h2>Thông tin chi tiết</h2>
+      <div class="specs-2col">
+        <div class="spec-row"><span>Hãng:</span>Samsung</div>
+        <div class="spec-row"><span>Loại tủ:</span>Side by side</div>
+        <div class="spec-row"><span>Dòng máy:</span>RS62R5001M9 / 655L</div>
+        <div class="spec-row"><span>Kiểu làm lạnh:</span>Multi Air Flow (Đa chiều)</div>
+        <div class="spec-row"><span>Tình trạng:</span>Đã sử dụng</div>
+        <div class="spec-row"><span>Bảo hành:</span>Còn bảo hành</div>
+        <div class="spec-row"><span>Thể tích:</span>&gt; 500 lít</div>
+        <div class="spec-row"><span>Kích thước (RxCxS):</span>91 × 178 × 72 cm</div>
+        <div class="spec-row"><span>Xuất xứ:</span>Trung Quốc</div>
+        <div class="spec-row"><span>Trọng lượng:</span>90 kg</div>
+      </div>
+
+      <div class="report-row">
+        <span>Bạn có sản phẩm tương tự?</span>
+        <button>Đăng bán</button>
+      </div>
+    </section>
+
+    <section class="box specs" style="margin-top:12px;max-width:100%;box-sizing:border-box;font-size:13px;color:#222;line-height:1.7;">
+      <h2>Mô tả chi tiết</h2>
+      <div class="desc-collapsible collapsed" id="descContent">
+        <p>Cần thanh lý gấp tủ lạnh Samsung dung tích lớn 655L, mã RS62R5001B4. Tủ vẫn còn mới như hình, thiết kế side by side sang trọng, màu sắc hiện đại, phù hợp cho gia đình đông người hoặc nhu cầu lưu trữ thực phẩm nhiều.
+Máy đang được sử dụng bình thường, khả năng làm lạnh ổn định, các ngăn chứa rộng rãi, tiện lợi khi bảo quản thực phẩm, rau củ, đồ đông lạnh và nước uống. Do mình đang chuẩn bị sửa nhà nên cần thanh lý bớt một tủ lạnh để lấy không gian, không phải bán vì máy hư hỏng. Sản phẩm hiện đang ở Quận 7. </p>
+      </div>
+      <div class="phone-mini" style="margin-top:10px;">SĐT liên hệ: <strong>090886****</strong> <button style="color:#1a73e8;background:none;border:none;font-size:13px;font-weight:600;cursor:pointer;padding:0;">Hiện số</button></div>
+      <hr class="show-more-divider">
+          <button class="show-more-btn" id="showMoreBtn" >
+              Xem thêm
+              <img id="arrowImg" src="images/icon_arrow_down.svg" alt="">
+          </button>
+    </section>
+    <script>
+    function toggleDesc() {
+      var content = document.getElementById('descContent');
+      var btn = document.getElementById('showMoreBtn');
+      var arrow = document.getElementById('arrowImg');
+      if (content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        content.classList.add('expanded');
+        btn.childNodes[0].textContent = 'Thu gọn ';
+        arrow.style.transform = 'rotate(270deg)';
+      } else {
+        content.classList.remove('expanded');
+        content.classList.add('collapsed');
+        btn.childNodes[0].textContent = 'Xem thêm ';
+        arrow.style.transform = 'rotate(90deg)';
+      }
+    }
+    </script>
+
+  </div>
+<section class="similar-section">
+  <p class="shop-heading">Tin của người bán</p>
+  <div class="product-grid">
+
+    <!-- CARD 1 -->
+    <article class="listing-card">
+      <div class="listing-img">
+        <img src="images/tin_ngban_1.svg" alt="Tủ lạnh Sharp 397 lít">
+        <div class="seller-overlay">
+          <span>8 ngày trước</span>
+          <span>3 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+        <button class="seller-love-btn">
+          <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+        </button>
+      </div>
+      <h3>Tủ lạnh Sharp 397 lít</h3>
+      <p class="listing-meta">Đã sử dụng · 300 - 399 lít</p>
+      <strong>3.800.000 đ</strong>
+      <p class="listing-location"><img src="images/icon_location.svg" alt=""> Q. Tân Phú<br>P. Tây Thạnh mới</p>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="listing-card">
+      <div class="listing-img">
+        <img src="images/tin_ngban_2.svg" alt="Tủ lạnh Sharp SJ-X346-SL 315L">
+        <div class="seller-overlay">
+          <span>19 giờ trước</span>
+          <span>3 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+        <button class="seller-love-btn">
+          <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+        </button>
+      </div>
+      <h3>Tủ lạnh Sharp SJ-X346-SL 315L Bạc</h3>
+      <p class="listing-meta">Đã sử dụng · 300 - 399 lít</p>
+      <strong>3.500.000 đ</strong>
+      <p class="listing-location"><img src="images/icon_location.svg" alt=""> Huyện Bình Chánh<br>Xã Bình Lợi mới</p>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="listing-card">
+      <div class="listing-img">
+        <img src="images/tin_ngban_3.svg" alt="Tủ lạnh Sharp Inverter 334L">
+        <div class="seller-overlay">
+          <span>4 ngày trước</span>
+          <span>4 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+        <button class="seller-love-btn">
+          <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+        </button>
+      </div>
+      <h3>Tủ lạnh Sharp Inverter 334L Xám</h3>
+      <p class="listing-meta">Đã sử dụng · 300 - 399 lít</p>
+      <strong>2.850.000 đ</strong>
+      <p class="listing-location"><img src="images/icon_location.svg" alt=""> Huyện Hóc Môn<br>Xã Bà Điểm mới</p>
+    </article>
+
+    <!-- CARD 4 -->
+    <article class="listing-card">
+      <div class="listing-img">
+        <img src="images/tin_ngban_4.svg" alt="Tủ lạnh 500L">
+        <div class="seller-overlay">
+          <span>6 ngày trước</span>
+          <span>4 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+        <button class="seller-love-btn">
+          <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+        </button>
+      </div>
+      <h3>TỦ LẠNH ĐỦ DUNG TÍCH GIÁ SV🟡SHIF</h3>
+      <p class="listing-meta">Đã sử dụng · > 500 lít</p>
+      <strong>2.000.000 đ</strong>
+      <p class="listing-location"><img src="images/icon_location.svg" alt=""> Thành phố Thủ Đức<br>P. Phước Long mới</p>
+    </article>
+
+    <!-- CARD 5 -->
+    <article class="listing-card">
+      <div class="listing-img">
+        <img src="images/tin_ngban_5.svg" alt="Tủ lạnh Sharp 314L">
+        <div class="seller-overlay">
+          <span>1 ngày trước</span>
+          <span>4 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+        <button class="seller-love-btn">
+          <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+        </button>
+      </div>
+      <h3>Tủ lạnh Sharp 314L Inverter Xám</h3>
+      <p class="listing-meta">Đã sử dụng · 300 - 399 lít</p>
+      <strong>3.600.000 đ</strong>
+      <p class="listing-location"><img src="images/icon_location.svg" alt=""> Thành phố Thủ Đức<br>P. Hiệp Bình mới</p>
+    </article>
+
+  </div>
+
+  <button class="load-more">Xem thêm</button>
+</section>
+  <!-- Tabs: Cùng hàng / Giá tốt hơn / Gần bạn / Còn bảo hành / Tin mới nhất -->
+  <section class="similar-section">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="setTab(this)">Cùng hàng</button>
+      <button class="tab-btn" onclick="setTab(this)">Giá tốt hơn</button>
+      <button class="tab-btn" onclick="setTab(this)">Gần bạn</button>
+      <button class="tab-btn" onclick="setTab(this)">Còn bảo hành</button>
+      <button class="tab-btn" onclick="setTab(this)">Tin mới nhất</button>
+    </div>
+    <!-- CARD 1 -->
+  <div class="cunghang-grid">
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/cunghang_1.svg" alt="Tên sản phẩm 1">
+          <div class="seller-overlay">
+            <span>8 ngày trước</span>
+            <span>3 <img src="images/tngban_icon_pic.svg" alt=""></span>
+        </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+          <span class="tag-hot">Bán chạy</span>
+        </div>
+        <h3>Tủ lạnh Samsung
+RS62R5001M9 655L</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>9.990.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt=""> Q. Gò Vấp<br>P. Gò Vấp mới</p>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/cunghang_2.svg" alt="Tên sản phẩm 2">
+          <div class="seller-overlay">
+            <span>4 giờ trước</span>
+            <span>5 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung 655l
+Bạc inverter</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>6.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt=""> Thành phố Thủ Đức<br>P. Tăng Nhơn Phú mới</p>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/cunghang_3.svg" alt="Tên sản phẩm 3">
+          <div class="seller-overlay">
+            <span>5 ngày trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung 655l
+Mới 90%</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>8.000.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt=""> Thành phố Thủ Đức<br>P. Tăng Nhơn Phú mới</p>
+      </article>
+
+      <!-- CARD 4 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/cunghang_4.svg" alt="Tên sản phẩm 4">
+          <div class="seller-overlay">
+            <span>4 giờ trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+          <span class="tag-hot" style="background:#ffcc00;">Đối tác</span>
+        </div>
+        <h3>Tủ lạnh Samsung 635L
+Inverter</h3>
+        <p class="listing-meta">Đã sử dụng  > 500 lít</p>
+        <strong>9.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt=""> Thành phố Thủ Đức<br>P. Tăng Nhơn Phú mới</p>
+      </article>
+
+      <!-- CARD 5 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/cunghang_5.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>1 ngày trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>THANH LÝ GẤP TỦ LẠNH
+SAMSUNG XỊN SIDE BY…</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>7.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận Tân Bình
+<br>P. Tân Sơn Hòa mới</p>
+      </article>
+      <!-- Hàng 2 - Card 1 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang2_sp1.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>1 ngày trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung
+RT58K7100BS/SV 586L</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>4.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận Tân Bình
+<br>P. Tân Sơn Hòa mới</p>
+      </article>
+      <!-- Hàng 2 - Card 2 -->
+         <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang2_sp2.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>3 ngày trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung Bạc Tay
+cầm lỗi</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>3.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận 7
+<br>P. Tân Hưng mới</p>
+      </article>
+      <!-- Hàng 2 - Card 3 -->
+       <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang2_sp3.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>3 ngày trước</span>
+            <span>6 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung 650 lít
+Side by side</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>8.200.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận Gò Vấp
+<br>P. An Hội Tây mới</p>
+      </article>
+       <!-- Hàng 2 - Card 4 -->
+        <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang2_sp4.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>1 giờ trước</span>
+            <span>2 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Bespoke Samsung
+Inverter 599L</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>24.900.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Thành phố Thủ Đức
+<br>P. Hiệp Bình mới</p>
+      </article>
+      <!-- Hàng 2 - Card 5 -->
+      <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang2_sp5.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>1 giờ trước</span>
+            <span>2 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh samsung Side by
+Side 600 lít</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>6.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận Gò Vấp
+<br>P. Hội Tây mới</p>
+      </article>
+      <!-- Hàng 3 Card 1 -->
+        <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang3_sp1.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>9 ngày trước</span>
+            <span>4 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung
+RS57DG400EM9SV 583</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>10.990.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Thành phố Thủ Đức
+<br>P. Hiệp Bình mới</p>
+      </article>
+      <!-- Hàng 3 Card 2 -->
+       <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang3_sp2.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>9 ngày trước</span>
+            <span>4 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Samsung
+RS64R5101SL 660 lít</h3>
+        <p class="listing-meta">Đã sử dụng > 500 lít</p>
+        <strong>11.500.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận 8
+<br>P. Bình Đông mới</p>
+      </article>
+      <!-- Hàng 3 Card 3 -->
+       <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang3_sp3.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>4 giờ trước</span>
+            <span>2 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+         </div>   
+      <h3><div style="display:inline-flex; align-items:center; gap:4px; background:#ff6600; color:#fff; font-size:11px; font-weight:700; padding:2px 6px; border-radius:4px; margin-right:4px; vertical-align:middle; align-self:unset;">
+        <img src="images/logo_doitac.svg" alt="" style="width:12px; height:12px; display:inline-block;">
+        Đối Tác
+      </div>Tủ lạnh Sharp 342l inverter</h3>
+          
+        <p class="listing-meta">Đã sử dụng 300 - 399 lítt</p>
+        <strong>3.800.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận 7
+<br>P. Bình Đông mới</p>
+      </article>
+      <!-- Hàng 3 Card 4 -->
+       <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang3_sp4.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>2 ngày trước</span>
+            <span>5 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3><div style="display:inline-flex; align-items:center; gap:4px; background:#ff6600; color:#fff; font-size:11px; font-weight:700; padding:2px 6px; border-radius:4px; margin-right:4px; vertical-align:middle; align-self:unset;">
+        <img src="images/logo_doitac.svg" alt="" style="width:12px; height:12px; display:inline-block;">
+        Đối Tác
+      </div>Thanh lý tủ lạnh Sharp inverter 342L zi</h3>
+        <p class="listing-meta">Đã sử dụng 300 - 399 lítt</p>
+        <strong>3.800.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận 7
+<br>P. Tân Mỹ mới</p>
+      </article>
+      <!-- Hàng 3 Card 5 -->
+       <article class="listing-card">
+        <div class="listing-img">
+          <img src="images/hang3_sp5.svg" alt="Tên sản phẩm 5">
+          <div class="seller-overlay">
+            <span>4 ngày trước</span>
+            <span>1 <img src="images/tngban_icon_pic.svg" alt=""></span>
+          </div>
+          <button class="seller-love-btn">
+            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+          </button>
+        </div>
+        <h3>Tủ lạnh Sharp 397 lít
+Inverter đẹp tiết kiệm</h3>
+        <p class="listing-meta">Đã sử dụng 300 - 399 lítt</p>
+        <strong>2.800.000 đ</strong>
+        <p class="listing-location"><img src="images/icon_location.svg" alt="">Quận Phú Nhuận
+<br>P. Phú Nhuận mới</p>
+      </article>
+      </div>
+        <button class="load-more">Xem thêm</button>
+
+  </section>
+  
+</div>
+</main>
+
+<footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <h4>Tìm việc làm trên ứng dụng Chợ Tốt</h4>
+                <div class="app-download">
+                    <div class="footer-download-icons">
+                        <img src="images/qr.svg" alt="QR code" class="footer-qr-icon">
+
+                        <div class="footer-store-icons">
+                            <a href="https://apps.apple.com/us/app/ch%E1%BB%A3-t%E1%BB%91t-chuy%C3%AAn-mua-b%C3%A1n-online/id790034666" target="_blank">
+                                <img src="images/app_store.svg" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.chotot.vn" target="_blank">
+                                <img src="images/google_play.svg" alt="Google Play">
+                            </a>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4>Về Việc Làm Tốt</h4>
+                <p>Về Việc Làm Tốt</p>
+                <p>Quy chế hoạt động sàn</p>
+                <p>Chính sách bảo mật</p>
+                <p>Giải quyết tranh chấp</p>
+                <p>Điều khoản sử dụng</p>
+                <p>Tư vấn việc làm</p>
+            </div>
+
+            <div>
+                <h4>Liên kết</h4>
+                <div class="footer-social-icons">
+                    <a href="https://vn.linkedin.com/company/cho-tot" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn">
+                    </a>
+
+                    <a href="https://www.youtube.com/@ChototVN" target="_blank">
+                        <img src="images/youtube.svg" alt="YouTube">
+                    </a>
+
+                    <a href="https://www.facebook.com/chotot.vn" target="_blank">
+                        <img src="images/facebook.svg" alt="Facebook">
+                    </a>
+                </div>
+                <p>Email: trogiup@chotot.vn</p>
+                <p>CSKH: 19003003</p>
+                <p>Địa chỉ: Tầng 18, Toà nhà UOA, số 6 đường Tân Trào, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam</p>
+            </div>
+        </div>
+
+        <div class="bottom-footer">
+            <div class="bottom-footer-text">
+                <span>CÔNG TY TNHH CHỢ TỐT - Người đại diện theo pháp luật: Nguyễn Trọng Tấn;</span>
+                <span>GPDKKD: 0312120782 do Sở KH & ĐT TP.HCM cấp ngày 11/01/2013; Giấy phép hoạt động dịch vụ việc làm: Số 33035/2021/03/SLĐTBXH-VLATLĐ cấp ngày 15/10/2021;</span>
+            </div>
+
+            <img src="images/cert.png" alt="">
+        </div>
+    </footer>
+
+<script src="goods.js"></script>
+</body>
+</html>
