@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chợ Tốt - Chat</title>
+    <link rel="stylesheet" href="chat_style.css">
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT -->
+    <div class="top-announcement" id="top-announcement">
+        <div class="top-announcement-inner">
+            <img class="top-bell" src="images/header/bell-top-banner.svg.svg" alt="">
+            <span>Từ 19/3/2026, Chợ Tốt Xe áp dụng Gói Hội Viên mới. Xem ngay</span>
+            <a href="#">Gói Ô Tô</a>
+            <span>/</span>
+            <a href="#">Gói Xe Máy</a>
+        </div>
+        <button class="close-announcement" id="close-announcement">×</button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <button class="menu-btn">
+                    <img src="images/header/VectorMucLuc.svg" alt="Menu">
+                </button>
+                <img class="logo-img" src="images/logo_chototxe.png" alt="Chợ Tốt Xe">
+                <button class="area-btn">
+                    <img src="images/header/VectorViTri.svg" alt="">
+                    <span>Chọn khu vực</span>
+                    <img class="down-icon" src="images/header/VectorMuiTenXuong.svg" alt="">
+                </button>
+            </div>
+
+            <div class="search-box">
+                <img class="search-icon-left" src="images/header/VectorTimkiem.svg" alt="">
+                <input type="text" placeholder="Tìm sản phẩm...">
+                <button class="search-submit">
+                    <img src="images/header/VectorTimkiem2.svg" alt="Tìm kiếm">
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <img src="images/header/VectorYeuThich.svg" alt="Yêu thích">
+                </button>
+                <button class="icon-btn">
+                    <img src="images/header/Vectorbell.svg" alt="Thông báo">
+                </button>
+                <button class="contact-header">
+                    <img src="images/header/VectorChat.svg" alt="">
+                    <span>Liên hệ</span>
+                </button>
+                <button class="manage-btn">Quản lý tin</button>
+                <button class="sell-btn">Đăng tin</button>
+                <button class="account-btn account-avatar" id="account-avatar-btn">
+                    <img class="account-icon" src="images/header/VectorTaikhoan.svg" alt="Tài khoản">
+                    <img class="down-icon" src="images/header/VectorMuiTenXuong2.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CHAT LAYOUT -->
+    <div class="chat-layout">
+
+        <!-- CỘT TRÁI: Danh sách hội thoại -->
+        <aside class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <h2 class="chat-title">Chat</h2>
+            </div>
+
+            <div class="chat-search-wrap">
+                <div class="chat-search-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="chat-search-input" placeholder="Nhập 3 ký tự để bắt đầu tìm kiếm">
+                </div>
+                <button class="chat-more-btn" title="Thêm">
+                    <img src="images/chat/daubacham.jpg" alt="Thêm tùy chọn">
+                </button>
+            </div>
+
+            <div class="chat-filter-tabs">
+                <button class="chat-filter-tab active" data-filter="all">Tất cả</button>
+                <button class="chat-filter-tab" data-filter="unread">Chưa đọc</button>
+                <button class="chat-filter-tab" data-filter="spam">Tin rác / Bỏ qua</button>
+            </div>
+
+            <ul class="chat-list" id="chat-list">
+                <!-- LÊ TUẤN -->
+                <li class="chat-item active" data-id="letuan">
+                    <div class="chat-item-avatar-wrapper">
+                        <img src="images/thongtinnguoiban/avatarnguoiban.svg" class="person-avatar">
+                        <img src="images/gallery/anh1.svg" class="car-overlay"> <!-- Xe của Tuấn -->
+                    </div>
+                    <div class="chat-item-body">
+                        <div class="chat-item-top">
+                            <span class="chat-item-name">Lê tuấn</span>
+                            <span class="chat-item-time">14 ngày trước</span>
+                        </div>
+                        <p class="chat-item-preview">xe vẫn còn ạ.</p>
+                    </div>
+                </li>
+                <!-- ÔNG CƯƠNG -->
+                <li class="chat-item" data-id="cuong">
+                    <div class="chat-item-avatar-wrapper">
+                        <img src="images/thongtinnguoiban/avatarnguoiban.svg" class="person-avatar">
+                        <img src="images/tindang/2.jpg" class="car-overlay"> <!-- Xe của Cương -->
+                    </div>
+                    <div class="chat-item-body">
+                        <div class="chat-item-top">
+                            <span class="chat-item-name">Cương</span>
+                            <span class="chat-item-time">10 giờ trước</span>
+                        </div>
+                        <p class="chat-item-preview">Vâng</p>
+                    </div>
+                </li>
+            </ul>
+
+        </aside>
+
+        <!-- CỘT GIỮA: Nội dung hội thoại -->
+        <main class="chat-main">
+
+            <!-- Header hội thoại -->
+            <div class="chat-conv-header">
+                <div class="chat-conv-user">
+                    <div class="chat-conv-avatar placeholder-avatar dark">
+                        <img src="images/thongtinnguoiban/avatarnguoiban.svg" alt="Avatar" class="avatar-img" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="chat-conv-name">Lê tuấn</p>
+                        <p class="chat-conv-status">
+                            <span class="status-dot"></span> Hoạt động 2 ngày trước
+                        </p>
+                    </div>
+                </div>
+                <div class="chat-conv-actions">
+                    <button class="chat-conv-icon-btn" title="Ghim">
+                        <img src="images/chat/price-tag.png" alt="Ghim">
+                    </button>
+                    <button class="chat-conv-icon-btn" title="Menu">
+                        <img class="account-icon" src="images/chat/list-interface-symbol.png" alt="Menu">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ảnh cho tin đăng -->
+            <div class="chat-listing-card"> 
+                <img src="images/gallery/anh1.svg" alt="Xe" onerror="this.style.background='#ddd'">
+                <div class="chat-listing-info">
+                    <p class="chat-listing-title">Toyota Innova Cross Hybrid 2024 25100 km xanh Đen</p>
+                    <p class="chat-listing-price">979.000.000 đ</p>
+                </div>
+            </div>
+
+            <!-- Khu vực messages -->
+            <div class="chat-messages" id="chat-messages">
+
+                <div class="chat-date-divider">Thứ 6, 15/05/2026</div>
+
+                <!-- Tin người dùng gửi (Outgoing) -->
+                <div class="chat-msg-row outgoing">
+                    <div class="chat-msg-wrapper">
+                        <div class="chat-bubble outgoing">
+                            <!-- Khối sản phẩm có vạch vàng -->
+                            <div class="chat-msg-product-ref">
+                                <img src="images/gallery/anh1.svg" alt="xe">
+                                <div class="ref-details">
+                                    <p class="ref-title">Toyota Innova Cross Hybrid 2024 25100 km xanh Đen</p>
+                                    <p class="ref-price">979.000.000 đ</p>
+                                </div>
+                            </div>
+                            <!-- Nội dung tin nhắn chữ -->
+                            <div class="chat-text">Xe này còn không ạ?</div>
+                        </div>
+                        <!-- Thời gian nằm ngoài và lệch phải -->
+                        <span class="chat-msg-time-outside">17:34</span>
+                    </div>
+                </div>
+                <!-- Tin nhắn thứ 2 (Đã sửa cấu trúc) -->
+                <div class="chat-msg-row outgoing">
+                    <div class="chat-msg-wrapper">
+                        <div class="chat-bubble outgoing">
+                            <!-- Khối sản phẩm (Nếu không muốn hiện lại ảnh xe ở tin nhắn này, bạn có thể xóa khối product-ref này đi) -->
+                            <div class="chat-msg-product-ref">
+                                <img src="images/gallery/anh1.svg" alt="xe">
+                                <div class="ref-details">
+                                    <p class="ref-title">Toyota Innova Cross Hybrid 2024 25100 km xanh Đen</p>
+                                    <p class="ref-price">979.000.000 đ</p>
+                                </div>
+                            </div>
+                            <div class="chat-text">anh ơi</div>
+                        </div>
+                        <!-- Meta (Thời gian + Đã đọc) nằm ngoài bong bóng -->
+                        <div class="chat-msg-meta-outside">
+                            <span class="chat-msg-time">17:37</span>
+                            <span class="chat-msg-read">
+                                | Đã đọc <img src="images/chat/tick.png" class="read-icon" alt="đã đọc">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tin người bán (bên trái) -->
+                <div class="chat-msg-row incoming">
+                    <div class="chat-msg-bubble-wrap">
+                        <div class="chat-bubble incoming">
+                            bạn cần gì alo mình nhé.
+                            <!-- Thêm dòng này vào tất cả tin nhắn incoming -->
+                            <div class="selected-reaction-pill"></div> 
+                        </div>
+                        <span class="chat-msg-time">18:44</span>
+                        <button class="reaction-trigger-btn">
+                            <img src="images/chat/like-outline.png" alt="Like">
+                        </button>
+                        <div class="reaction-popup">
+                            <span class="emoji" data-emoji="❤️">❤️</span>
+                            <span class="emoji" data-emoji="😆">😆</span>
+                            <span class="emoji" data-emoji="😮">😮</span>
+                            <span class="emoji" data-emoji="😢">😢</span>
+                            <span class="emoji" data-emoji="😡">😡</span>
+                            <span class="emoji" data-emoji="👍">👍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-msg-row incoming">
+                    <div class="chat-msg-bubble-wrap">
+                        <div class="chat-bubble incoming">
+                            xe vẫn còn ạ.
+                            <!-- Thêm dòng này vào tất cả tin nhắn incoming -->
+                            <div class="selected-reaction-pill"></div> 
+                        </div>
+                        <span class="chat-msg-time">18:44</span>
+                        <button class="reaction-trigger-btn">
+                            <img src="images/chat/like-outline.png" alt="Like">
+                        </button>
+                        <div class="reaction-popup">
+                            <span class="emoji" data-emoji="❤️">❤️</span>
+                            <span class="emoji" data-emoji="😆">😆</span>
+                            <span class="emoji" data-emoji="😮">😮</span>
+                            <span class="emoji" data-emoji="😢">😢</span>
+                            <span class="emoji" data-emoji="😡">😡</span>
+                            <span class="emoji" data-emoji="👍">👍</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Gợi ý câu hỏi nhanh -->
+            <div class="chat-quick-replies" id="chat-quick-replies">
+                <div class="quick-replies-track" id="quick-replies-track">
+                    <button class="quick-reply-btn">Xe này còn không ạ?</button>
+                    <button class="quick-reply-btn">Xe chính chủ hay được uỷ quyền ạ?</button>
+                    <button class="quick-reply-btn">Giá xe có thể thương lượng được không ạ?</button>
+                    <button class="quick-reply-btn">Xe có còn bảo hiểm không?</button>
+                    <button class="quick-reply-btn">Xe đã qua bao nhiêu đời chủ?</button>
+                    <button class="quick-reply-btn">Xe có thể xem trực tiếp không ạ?</button>
+                </div>
+                <button class="quick-replies-arrow qr-prev" id="qr-prev">‹</button>
+                <button class="quick-replies-arrow qr-next" id="qr-next">›</button>
+            </div>
+
+            <!-- Input gửi tin -->
+            <div class="chat-input-wrap">
+                <!-- Input chính -->
+                <div class="chat-input-box">
+                    <input type="text" id="chat-input" placeholder="Nhập tin nhắn">
+                    <button class="chat-send-btn" id="chat-send-btn">
+                    <img src="images/chat/pointed.png" alt="Gửi" class="send-icon">
+                    </button>
+                </div>
+
+                <!-- Icon Hình & video / Địa chỉ -->
+                <div class="chat-input-actions">
+                    <button class="chat-attach-btn">
+                        <img src="images/VectorAnh.svg" alt="Hình và video" class="attach-icon">
+                        Hình và video
+                    </button>
+                    <button class="chat-attach-btn">
+                        <img src="images/VectorVitri.svg" alt="Địa chỉ" class="attach-icon">
+                        Địa chỉ
+                    </button>
+                </div>
+
+                
+            </div>
+
+        </main>
+
+        <!-- CỘT PHẢI: Thông tin người bán -->
+        <aside class="chat-info-panel">
+
+            <div class="chat-info-seller">
+                <div class="chat-info-avatar placeholder-avatar dark large">
+                    <img src="images/thongtinnguoiban/avatarnguoiban.svg" alt="Avatar" class="avatar-img">
+                </div>
+                <p class="chat-info-name">Lê tuấn</p>
+                <button class="chat-info-view-btn">Xem Trang</button>
+            </div>
+
+            <div class="chat-info-section">
+                <p class="chat-info-label">Ảnh và video</p>
+                <div class="chat-info-media-placeholder">
+                    <img src="images/VectorAnh.svg" alt="Icon placeholder" class="placeholder-vector">
+                    <span class="placeholder-text">Hình, video mới nhất của trò chuyện sẽ xuất hiện tại đây</span>
+                </div>
+            </div>
+
+            <div class="chat-info-section">
+                <p class="chat-info-label">Tin đang trao đổi</p>
+
+                <div class="chat-info-listing">
+                    <!-- Card tin đăng -->
+                    <div class="chat-info-listing-card">
+                        <img src="images/gallery/anh1.svg" alt="Xe" class="listing-img">
+                        <div class="listing-detail">
+                            <p class="listing-title">Toyota Innova Cross Hybrid 2024 25100 km...</p>
+                            <p class="listing-price">979.000.000 đ</p>
+                            <button class="listing-btn">Nhắn</button>
+                        </div>
+                    </div>
+
+                    <!-- Nút xem tất cả -->
+                    <div class="chat-info-listing-seeall">
+                        <img src="images/chat/muiten.png" alt="Xem tất cả" class="seeall-icon">
+                        <span>Xem tất cả</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-info-section chat-info-actions">
+                <button class="chat-action-row report">
+                    <img src="images/chat/flag.PNG" alt="Báo xấu" class="action-icon">
+                    Báo xấu
+                </button>
+                <button class="chat-action-row block">
+                    <img src="images/chat/close-x-svgrepo-com.svg" alt="Chặn người dùng" class="action-icon">
+                    Chặn người dùng
+                </button>
+                <button class="chat-action-row hide">
+                    <img src="images/chat/visual.svg" alt="Ẩn hội thoại" class="action-icon">
+                    Ẩn hội thoại
+                </button>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="chat_data.js"></script>
+    <script src="chat_script.js"></script>
+</body>
+</html>
