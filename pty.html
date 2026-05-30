@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà Tốt - Chi tiết bất động sản</title>
+    <link rel="stylesheet" href="pty.css">
+    <link href="https://fonts.googleapis.com/css2?family=:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+    <div class="header-container">
+
+        <div class="menu-icon">☰</div>
+
+        <div class="logo">
+            <img src="images/logo_pty.png" alt="Nhà Tốt">
+        </div>
+
+        <div class="area-wrapper">
+            <button class="area-btn" id="areaBtn">
+                <img src="images/location_header.png" alt="Vị trí" class="location-icon">
+                <span id="headerLocationText">Tp Hồ Chí Minh</span>
+                <span class="arrow">▼</span>
+            </button>
+
+            <div class="location-popup" id="locationPopup">
+                <div class="location-main" id="locationMain">
+                    <h2>Khu vực</h2>
+
+                    <div class="select-box" data-type="province">
+                        <label>Chọn tỉnh thành <span>*</span></label>
+                        <div class="select-value">
+                            <span id="provinceText">Tp Hồ Chí Minh</span>
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <div class="select-box" data-type="district">
+                        <label>Chọn quận huyện <span>*</span></label>
+                        <div class="select-value muted">
+                            <span id="districtText">Chọn quận huyện</span>
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <div class="select-box disabled" data-type="ward">
+                        <label>Chọn phường xã <span>*</span></label>
+                        <div class="select-value muted">
+                            <span id="wardText">Chọn phường xã</span>
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <button class="apply-btn" id="applyLocationBtn">Áp dụng</button>
+                </div>
+
+                <div class="location-list-screen" id="locationListScreen">
+                    <div class="list-header">
+                        <button id="backToMainBtn">←</button>
+                        <h2 id="listTitle">Tỉnh thành</h2>
+                    </div>
+
+                    <div class="search-location">
+                        <img src="images/icon_search.png" alt="Tìm kiếm">
+                        <input type="text" id="locationSearchInput" placeholder="Tìm tỉnh thành">
+                    </div>
+
+                    <div class="location-list" id="locationList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-box">
+    <img src="images/icon_search_grey.png" alt="Tìm kiếm" class="search-left-icon">
+
+    <input type="text" placeholder="Tìm bất động sản...">
+
+    <button class="search-btn">
+        <img src="images/icon_search.png" alt="Tìm kiếm">
+    </button>
+</div>
+
+        <div class="header-actions">
+            <img src="images/icon_love_header.png" alt="Nhà Tốt">
+            <img src="images/icon_bell.png" alt="Nhà Tốt">
+            
+            <button class="manage-btn">
+    <img src="images/icon_chat.png" alt="Chat" class="manage-icon">
+    Quản lý tin
+</button>
+            <button class="post-btn">Đăng tin</button>
+            <img src="images/icon_user.png" alt="Nhà Tốt" class="user-icon">
+        </div>
+
+    </div>
+</header>
+<div class="top-announcement">
+  <p>
+    Nhà Tốt / Mua bán Đất / Mua bán Đất Tp Hồ Chí Minh / Mua bán Đất Quận Bình Tân / 
+    <strong>Bán nền đất đẹp siêu rẻ 4x20m hẻm rộng 8m Đường Mã Lò giáp Lê Văn Quới</strong>
+  </p>
+</div>
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper">
+
+        <!-- LEFT CONTENT -->
+        <section class="left-content">
+
+            <!-- GALLERY -->
+            <div class="card gallery-card">
+                <div class="main-image">
+    <img src="images/main_pic.jpg" alt="Ảnh nhà" id="mainGalleryImage">
+
+                    <button class="play-button">▶</button>
+
+                    <div class="image-action">
+    <button class="circle-action-btn">
+        <img src="images/icon_love_header.png" alt="Yêu thích">
+    </button>
+
+    <button class="circle-action-btn">
+        <img src="images/btn_share.svg" alt="Chia sẻ">
+    </button>
+
+    <button class="circle-action-btn">
+        <img src="images/btn_chitiet.svg" alt="Chi tiết">
+    </button>
+</div>
+                </div>
+
+                <div class="thumb-list">
+                    <div class="thumb active">
+                        <img src="images/main_pic.jpg" alt="">
+                    </div>
+
+                    <div class="thumb">
+                        <img src="images/main_pic_1.jpg" alt="">
+                    </div>
+
+                    <div class="thumb">
+                        <img src="images/main_pic_2.jpg" alt="">
+                    </div>
+
+                    <div class="thumb">
+                        <img src="images/main_pic_2.jpg" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- POST INFO -->
+            <div class="media-count">
+    <span class="media-item">
+        <img src="images/icon_picture.svg" alt="Ảnh">
+        3 ảnh
+    </span>
+
+    <span class="media-item">
+        <img src="images/icon_video.svg" alt="Video">
+        1 video
+    </span>
+</div>
+
+<!--Thanh tiêu đề--> 
+<!-- PROPERTY SUMMARY CARD -->
+<div  id="property-summary" class="card property-summary-card">
+    <!-- Title -->
+    <h1  class="property-title">
+        Bán nền đất đẹp siêu rẻ 4x20m hẻm rộng 8m Đường Mã Lò giáp Lê Văn Quới
+    </h1>
+
+    <!-- Tags -->
+    <div class="property-tags">
+        <span class="tag green">Giấy tờ khớp tin đăng</span>
+        <span class="tag orange">Sổ hồng riêng</span>
+        <span class="tag dark">Chính chủ</span>
+    </div>
+
+    <!-- Address + Map -->
+    <div class="address-map-card">
+        <div class="address-time">
+            <div class="property-address">
+                <img src="images/icon_location.svg" class="icon-large">
+                <div class="address-text">
+                    <span>Phường 7, Quận Gò Vấp, Tp Hồ Chí Minh</span>
+                    <small>Phường Hạnh Thông, TP Hồ Chí Minh mới</small>
+                </div>
+            </div>
+
+            <div class="property-time">
+                <img src="images/icon_time.svg" class="icon-large">
+                <span>Đăng 3 giờ trước</span>
+            </div>
+
+            <a href="#" class="map-link">Xem bản đồ</a>
+        </div>
+
+        <div class="property-map">
+            <img src="images/icon_map.svg" class="map-img">
+            <img src="images/location_header.png" class="map-pin">
+        </div>
+    </div>
+</div>
+
+<!-- THÔNG TIN NHANH -->
+<!-- THÔNG TIN NHANH -->
+<div class="card quick-info-card">
+    <div class="quick-info">
+
+        <div class="quick-item">
+            <img src="images/btn_price_square.png" alt="Giá/m²">
+            <span>67,50 triệu/m²</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_thocu.png" alt="Loại đất">
+            <span>Thổ cư</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_bedroom.png" alt="Phòng ngủ">
+            <span>Phòng ngủ: 2</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_chuy.png" alt="Hướng">
+            <span>Hướng tây</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_square.png" alt="Diện tích">
+            <span>80 m²</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_dacoso.png" alt="Sổ">
+            <span>Đã có sổ</span>
+        </div>
+
+        <div class="quick-item">
+            <img src="images/btn_year_built.svg" alt="Năm xây dựng">
+            <span>Năm xây dựng: 2000</span>
+        </div>
+
+    </div>
+</div>
+    
+            <!-- PROPERTY FEATURES -->
+<div class="card">
+    <h2  class="section-title">Đặc điểm bất động sản</h2>
+
+    <div class="feature-slider">
+
+        <!-- Nút trượt trái -->
+        <button class="feature-arrow feature-arrow-left" id="featurePrev">
+            <img src="images/icon_arrow_left.svg" alt="Trượt trái">
+        </button>
+
+        <!-- Danh sách card -->
+        <div class="feature-grid" id="featureGrid">
+
+            <!-- CARD 1 -->
+            <div class="feature-card">
+                <div class="feature-title">
+                    <img src="images/btn_tongquan.svg" alt="">
+                    <h3>Tổng quan tài sản</h3>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <img src="images/btn_tq1.svg" alt="">
+                        <span>Loại hình: Đất nền</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_square.png" alt="">
+                        <span>Diện tích: 80 m²</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tq3_size.png" alt="">
+                        <span>Kích thước: 4m x 20m</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_price_square.png" alt="">
+                        <span>Giá/m²: 67,50 triệu/m²</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tq5_street.svg" alt="">
+                        <span>Đường/hẻm: Hẻm rộng 8m</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="feature-card">
+                <div class="feature-title">
+                    <img src="images/btn_congnang.svg" alt="">
+                    <h3>Công năng sử dụng</h3>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <img src="images/btn_bedroom.png" alt="">
+                        <span>Phòng ngủ: 2 phòng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_cn2_wc.svg" alt="">
+                        <span>WC: 2 phòng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_cn_3.png" alt="">
+                        <span>Phòng khách: Có</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_cn4.png" alt="">
+                        <span>Bếp: Có khu bếp riêng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_cn5.png" alt="">
+                        <span>Ban công: Có</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_cn6_parking.svg" alt="">
+                        <span>Chỗ để xe: Để xe máy trong nhà</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="feature-card">
+                <div class="feature-title">
+                    <img src="images/btn_phaply.svg" alt="">
+                    <h3>Pháp lý</h3>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <img src="images/btn_pl1.svg" alt="">
+                        <span>Sổ: Sổ hồng riêng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_pl2.svg" alt="">
+                        <span>Loại đất: Thổ cư</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_pl3.svg" alt="">
+                        <span>Quy hoạch: Không vướng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_pl4.png" alt="">
+                        <span>Giao dịch: Công chứng sang tên</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="feature-card">
+                <div class="feature-title">
+                    <img src="images/btn_tnnt.svg" alt="">
+                    <h3>Tiện nghi và nội thất</h3>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <img src="images/btn_tnnt1.svg" alt="">
+                        <span>Nội thất đầy đủ</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tnnt_tick.svg" alt="">
+                        <span>Có thang máy</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tnnt_tick.svg" alt="">
+                        <span>Có máy lạnh</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tnnt_tick.svg" alt="">
+                        <span>Có máy nước nóng</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tnnt_5.svg" alt="">
+                        <span>Tủ bếp, kệ bếp</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_tnnt6.svg" alt="">
+                        <span>Dọn vào ở ngay</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="feature-card">
+                <div class="feature-title">
+                    <img src="images/btn_vitri.svg" alt="">
+                    <h3>Vị trí và môi trường</h3>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <img src="images/btn_vitri1.svg" alt="">
+                        <span>Khu dân cư hiện hữu</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_vitri2.svg" alt="">
+                        <span>Hẻm xe hơi 8m</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_vitri3.svg" alt="">
+                        <span>Gần tiện ích dân sinh</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_vitri4.svg" alt="">
+                        <span>Kết nối nhanh trung tâm</span>
+                    </li>
+                    <li>
+                        <img src="images/btn_vitri5.svg" alt="">
+                        <span>An ninh, ít ngập nước</span>
+                    </li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+        <!-- Nút trượt phải -->
+        <button class="feature-arrow feature-arrow-right" id="featureNext">
+            <img src="images/icon_arrow_right.svg" alt="Trượt phải">
+        </button>
+
+    </div>
+</div>
+    <button class="view-all-btn">Xem tất cả các tính năng</button>
+
+            <!-- DESCRIPTION -->
+            <div id="description"  class="card">
+                <h2 class="section-title">Mô tả chi tiết</h2>
+
+                <div class="description">
+                    <p>+ Chủ nhà cần bán nền đất đẹp có sẵn nhà xuống đang cho thuê, hẻm đẹp rộng trên đường Mã Lò giáp Lê Văn Quới gần ngã 4 Bốn Xã, Q. Tân Phú.</p>
+
+                    <p>+ Diện tích công nhận: 4x20m.</p>
+
+                    <p>+ Khu an ninh, dân trí cao, sạch đẹp, vị trí tăng dân cư, đường rộng, không dây điện lộn xộn, xe hơi ra vào thuận tiện.</p>
+
+                    <p>+ Vị trí gần chợ, trường học, siêu thị, bách hóa xanh, ngân hàng, trung tâm thương mại.</p>
+                </div>
+
+                <button font-size="15px" class="phone-btn">SĐT liên hệ: 0919**** Hiện số</button>
+                 
+            <button class="see-more">
+                Xem thêm
+                <img src="images/icon_arrow_down.svg" alt="">
+            </button>
+            </div>
+
+<!-- PAYMENT CALCULATOR -->
+<!-- PAYMENT CALCULATOR -->
+<div id="payment-calculator" class="card payment-card" id="payment-calculator">
+    <h2 class="section-title">Ước tính khoản thanh toán</h2>
+
+    <div class="payment-tabs">
+        <label class="payment-tab active" data-payment-tab="installment">
+            <input type="radio" name="paymentTypeMain" value="installment" checked>
+            <span class="tick-box"></span>
+            <span>Trả góp</span>
+            <strong data-monthly-preview>7.830.366</strong>
+            <span>VNĐ / tháng</span>
+        </label>
+
+        <label class="payment-tab" data-payment-tab="fullpay">
+            <input type="radio" name="paymentTypeMain" value="fullpay">
+            <span class="tick-box"></span>
+            <span>Thanh toán ngay</span>
+            <strong data-cash-preview>5.400.000.000</strong>
+            <span>VNĐ</span>
+        </label>
+    </div>
+
+    <div class="payment-content" id="installmentContent">
+        <div class="payment-form">
+            <div class="form-group">
+                <label for="inputLoan">Số tiền muốn vay</label>
+                <input id="inputLoan" type="text" value="2.400.000.000">
+            </div>
+
+            <div class="form-group">
+                <label for="inputLoanRate">Tỷ lệ vay (%)</label>
+                <input id="inputLoanRate" type="text" value="18%">
+            </div>
+
+            <div class="form-group">
+                <label for="inputTerm">Thời hạn vay/năm</label>
+                <input id="inputTerm" type="text" value="20">
+            </div>
+
+            <div class="form-group">
+                <label for="inputRate">Lãi suất theo ngân hàng % / năm</label>
+                <input id="inputRate" type="text" value="7.5%">
+            </div>
+
+            <div class="form-group">
+                <label for="inputType">Loại hình</label>
+                <select id="inputType">
+                    <option value="equal">Trả lãi chia đều</option>
+                    <option value="reducing">Dư nợ giảm dần</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="payment-result">
+            <div class="result-header">
+                <img src="images/main_pic.jpg" alt="BĐS" class="result-img">
+                <div class="result-title">Giá tài sản:</div>
+                <div class="result-price" id="assetPriceText">5.400.000.000 VNĐ</div>
+            </div>
+            <div class="payment-bar">
+                <div class="bar-orange" id="barOrange"></div>
+                <div class="bar-yellow" id="barYellow"></div>
+                <div class="bar-blue" id="barBlue"></div>
+            </div>
+
+            <div class="payment-bar-percent">
+                <span id="percentDown" class="percent-orange">70%</span>
+                <span id="percentPrincipal" class="percent-yellow">15%</span>
+                <span id="percentInterest" class="percent-blue">14%</span>
+            </div>
+
+            <div class="result-row result-row-legend">
+                <span class="result-label">
+                    <span class="pay-dot pay-dot-orange"></span>
+                    Cần trả trước:
+                </span>
+                <strong id="resDownPayment">4.428.000.000đ</strong>
+            </div>
+
+            <div class="result-row result-row-legend">
+                <span class="result-label">
+                    <span class="pay-dot pay-dot-yellow"></span>
+                    Gốc còn trả:
+                </span>
+                <strong id="resPrincipal">972.000.000đ</strong>
+            </div>
+
+            <div class="result-row result-row-legend">
+                <span class="result-label">
+                    <span class="pay-dot pay-dot-blue"></span>
+                    Lãi cần trả:
+                </span>
+                <strong id="resInterest">907.287.802đ</strong>
+            </div>
+
+            <hr>
+
+            <div class="result-row">
+                <span>Thanh toán hàng tháng</span>
+                <strong id="resMonthly">7.830.366đ</strong>
+            </div>
+
+            <div class="result-row total">
+                <span>Tổng phải trả</span>
+                <strong id="resTotal">6.307.287.802đ</strong>
+            </div>
+
+<p class="interest-detail">Xem chi tiết lãi vay</p>
+
+<button class="primary-btn request-btn" type="button" data-request-mode="installment">
+    <img src="images/icon_guiyeucau.svg" alt="" class="request-icon">
+    <span>Gửi yêu cầu</span>
+</button>
+        </div>
+    </div>
+
+<div class="fullpay-content" id="fullpayContent">
+    <div class="payment-result fullpay-result">
+        <div class="result-header fullpay-header">
+            <img src="images/main_pic.jpg" alt="BĐS" class="result-img">
+
+            <div>
+                <div class="result-title">Giá trị BĐS:</div>
+                <div class="result-price">5.400.000.000đ</div>
+            </div>
+        </div>
+
+        <div class="fullpay-bar">
+            <div class="fullpay-deposit-bar"></div>
+            <div class="fullpay-remain-bar"></div>
+        </div>
+
+        <div class="fullpay-percent">
+            <span id="percentDown" class="percent-orange">10%</span>
+            <span id="percentRemain" class="percent-yellow">90%</span>
+        </div>
+
+        <div class="result-row result-row-legend fullpay-row">
+            <span class="result-label">
+                <span class="pay-dot pay-dot-orange"></span>
+                Đặt cọc dự kiến
+            </span>
+            <strong id="fullpayDeposit">540.000.000 đ</strong>
+        </div>
+
+        <div class="result-row result-row-legend fullpay-row">
+            <span class="result-label">
+                <span class="pay-dot pay-dot-yellow"></span>
+                Thanh toán còn lại
+            </span>
+            <strong id="fullpayRemain">4.860.000.000 đ</strong>
+        </div>
+
+        <hr>
+
+        <div class="result-row total fullpay-total-row">
+            <span>Tổng thanh toán</span>
+            <strong id="fullpayTotal">5.400.000.000 đ</strong>
+        </div>
+
+<button class="primary-btn fullpay-btn request-btn" type="button" data-request-mode="fullpay">
+    <img src="images/icon_guiyeucau.svg" alt="" class="request-icon">
+    <span>Gửi yêu cầu</span>
+</button>
+    </div>
+</div>
+</div>
+ <!-- COMMITMENT -->
+<div  id="commitment" class="card">
+    <h2 class="section-title">Cam kết</h2>
+
+    <p class="commit-desc">
+        Thông tin nhà được mô tả minh bạch, hỗ trợ kiểm tra pháp lý và giao dịch an toàn trước khi mua.
+    </p>
+
+    <div class="commit-grid">
+
+        <div class="commit-item">
+            <h3>
+                <img src="images/ck_btn_phaply.svg" alt="Pháp lý" class="commit-icon">
+                Pháp lý & giấy tờ
+            </h3>
+
+            <p><span class="check-icon">✓</span> Sổ hồng riêng</p>
+            <p><span class="check-icon">✓</span> Đất thổ cư</p>
+            <p><span class="check-icon">✓</span> Không tranh chấp</p>
+            <p><span class="check-icon">✓</span> Kiểm tra quy hoạch</p>
+            <p><span class="check-icon">✓</span> Công chứng sang tên</p>
+        </div>
+
+        <div class="commit-item">
+            <h3>
+                <img src="images/ck_btn_house.svg" alt="Tình trạng nhà" class="commit-icon">
+                Tình trạng nhà
+            </h3>
+
+            <p><span class="check-icon">✓</span> Đúng hình đăng</p>
+            <p><span class="check-icon">✓</span> Kết cấu ổn định</p>
+            <p><span class="check-icon">✓</span> Điện nước tốt</p>
+            <p><span class="check-icon">✓</span> Không ngập</p>
+            <p><span class="check-icon">✓</span> Dọn vào ở ngay</p>
+        </div>
+
+        <div class="commit-item">
+            <h3>
+                <img src="images/ck_btn_hotro.svg" alt="Hỗ trợ sau mua" class="commit-icon">
+                Hỗ trợ sau mua
+            </h3>
+
+            <p><span class="check-icon">✓</span> Xem nhà thực tế</p>
+            <p><span class="check-icon">✓</span> Thương lượng giá</p>
+            <p><span class="check-icon">✓</span> Hỗ trợ sang tên</p>
+            <p><span class="check-icon">✓</span> Tư vấn vay ngân hàng</p>
+            <p><span class="check-icon">✓</span> Kết nối công chứng</p>
+        </div>
+
+    </div>
+</div>
+        </section>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="right-sidebar">
+
+            <!-- PRICE BOX -->
+            <div class="card side-card">
+                <div class="tag-list">
+                    <span class="tag green">Giá cực tốt</span>
+                    <span class="tag pastelgreen">Đã chọn nổi bật</span>
+                </div>
+
+                <h2 class="price">5.400.000.000 đ</h2>
+
+    <!-- Tabs Trả góp / Thanh toán ngay -->
+<div class="payment-tabs sidebar-payment-tabs">
+    <label class="payment-tab active" data-payment-tab="installment">
+        <input type="radio" name="paymentTypeSide" value="installment" checked>
+        <span class="tick-box"></span>
+        <span>Trả góp</span>
+        <strong data-monthly-preview>7.830.366</strong>
+        <span>VNĐ / tháng</span>
+    </label>
+
+    <label class="payment-tab" data-payment-tab="fullpay">
+        <input type="radio" name="paymentTypeSide" value="fullpay">
+        <span class="tick-box"></span>
+        <span>Thanh toán ngay</span>
+        <strong data-cash-preview>5.400.000.000</strong>
+        <span>VNĐ</span>
+    </label>
+</div>
+
+                <p class="interest-text">Lãi suất hàng năm 13.22% trong 72 tháng.</p>
+
+<button class="primary-btn fullpay-btn request-btn" type="button" data-request-mode="installment">
+    <img src="images/icon_guiyeucau.svg" alt="" class="request-icon">
+    <span>Gửi yêu cầu</span>
+</button>
+
+<a href="#payment-calculator" class="payment-detail-link" id="payment-detail-link">Xem giá và chi tiết thanh toán</a>
+                <div class="market-price">
+                    <div class="market-price__title-wrap">
+                        <h4 class="market-price__title">Khoảng giá thị trường</h4>
+                        <button class="market-price__info" type="button">i</button>
+                    </div>
+
+                    <div class="market-price__chart" style="--current: 60%; --range-start: 27%; --range-end: 69%;">
+                        <div class="market-price__bubble">67,5 triệu</div>
+
+                        <div class="market-price__track">
+                            <div class="market-price__fill"></div>
+                        </div>
+
+                        <div class="market-price__labels">
+                            <span class="market-price__label market-price__label--min">50 tr</span>
+                            <span class="market-price__label market-price__label--max">75 tr</span>
+                        </div>
+                        <p class="market-price__note">Theo dữ liệu trong 3 tháng gần nhất</p>
+                    </div>
+                </div>
+            </div>
+                
+
+<!-- SELLER -->
+<div class="card side-card">
+    <div class="seller-top">
+        <div class="seller-avatar-wrapper">
+            <div class="seller-avatar">
+                <img src="images/seller_user.svg" alt="User">
+            </div>
+            
+        </div>
+
+        <div class="seller-info">
+            <h4>Lê tuấn</h4>
+            <div class="seller-meta">
+                <span class="seller-rating"><img src="images/seller_sao.svg" alt=""> 5.0 (16 đánh giá)</span>
+                <span class="seller-sales">
+                    <span class="sold">0 đã bán</span>
+                    <span class="on-sale">8 đang bán</span>
+                </span>
+            </div>
+
+            <div class="seller-meta">
+                <span class="seller-status"><img src="images/seller_status.svg" alt=""> Hoạt động 2 giờ trước</span>
+                <span class="seller-response">Tỷ lệ phản hồi: --</span>
+            </div>
+
+            <button class="btn-shop"><img src="images/seller_shop.svg" alt=""> Xem Shop</button>
+        </div>
+    </div>
+
+    <div class="contact-buttons">
+        <button class="btn-phone" data-full-phone="0356191234"><img src="images/seller_phone.svg" alt="">  Hiện số 035619xxx </button>
+        <button class="btn-chat"><img src="images/seller_chat.svg" alt=""> Chat ngay</button>
+        <button class="btn-zalo">Chat Zalo</button>
+    </div>
+</div>
+            <!-- BROKER -->
+            <div class="card side-card">
+              <h3 class="side-title broker-title">
+                    <img src="https://static.chotot.com/storage/chotot-icons/svg/msite_skagent_logo.svg" alt="Môi giới">
+                    <span>Top môi giới hoạt động tại Quận Gò Vấp</span>
+                </h3>
+                
+
+                <div class="broker-item">
+                    <div width="42px" height="42px" border-radius: 50%> <img src="images/logo_ngban.svg" alt="Logo"></div>
+                    <div>
+                        <h4>PHẠM THỊ HUỆ</h4>
+                        <p>0962 543 512</p>
+                    </div>
+                </div>
+
+                <div class="broker-item">
+                    <div class="small-avatar"><img src="images/btn_ngban2.svg" alt="Logo"></div>
+                    <div>
+                        <h4>Tín Hưng</h4>
+                        <p>0983 631 021</p>
+                    </div>
+                </div>
+
+                <div class="broker-item">
+                    <div class="small-avatar"><img src="images/btn_ngban3.svg" alt="Logo"></div>
+                    <div>
+                        <h4>Lê Minh</h4>
+                        <p>0974 292 137</p>
+                    </div>
+                </div>
+
+                <div class="broker-item">
+                    <div class="small-avatar"><img src="images/btn_ngban4.svg" alt="Logo"></div>
+                    <div>
+                        <h4>SANG NHÀ PHỐ</h4>
+                        <p>0375 781 063</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOT REAL ESTATE -->
+<!-- HOT REAL ESTATE -->
+<div class="card side-card hot-real-estate-card">
+    <h3 class="hot-title">Bất động sản nổi bật</h3>
+    <div class="hot-list">
+        <a href="#" class="hot-row">
+            Bán Căn hộ chung cư Thành phố Thủ Đức <span>(3.455)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Gò Vấp <span>(3.157)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Bình Thạnh <span>(3.118)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Bình Tân <span>(2.870)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Thành phố Thủ Đức <span>(2.434)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Tân Phú <span>(2.308)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Tân Bình <span>(1.905)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Đống Đa <span>(1.807)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận 12 <span>(1.758)</span>
+        </a>
+
+        <a href="#" class="hot-row">
+            Bán Nhà riêng Quận Hà Đông <span>(1.660)</span>
+        </a>
+    </div>
+
+    <a href="#" class="hot-see-more">
+        Xem thêm
+        <span>›</span>
+    </a>
+</div>
+<!-- NEWS -->
+<div class="card side-card news-guide-card">
+    <h3 class="news-guide-title">Cẩm nang nhà đất mới</h3>
+
+    <div class="news-guide-list">
+
+        <a href="" class="news-guide-item">
+            <img src="images/camnang1.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng TPHCM tháng 02 2026</p>
+        </a>
+
+        <a href="#" class="news-guide-item">
+            <img src="images/camnang2.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng tỉnh Quảng Trị tháng 02 năm 2026</p>
+        </a>
+
+        <a href="#" class="news-guide-item">
+            <img src="images/camnang3.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng tỉnh Bình phú Huế tháng 01 2026</p>
+        </a>
+
+        <a href="#" class="news-guide-item">
+            <img src="images/camnang4.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng tỉnh Đà Nẵng tháng 01 2026</p>
+        </a>
+
+        <a href="#" class="news-guide-item">
+            <img src="images/camnang5.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng Đà Nẵng tháng 01 2026</p>
+        </a>
+
+        <a href="#" class="news-guide-item">
+            <img src="images/camnang6.svg" alt="Cẩm nang nhà đất">
+            <p>Bảng giá vật liệu xây dựng tỉnh Hưng Yên tháng 01 2026</p>
+        </a>
+
+    </div>
+</div>
+        </aside>
+
+    </main>
+
+<!-- SELLER PRODUCTS -->
+<section class="seller-products-section">
+    <div class="card seller-products-card">
+        <h2 class="seller-products-title">Tin của người bán</h2>
+
+        <div class="seller-products-wrapper">
+            <button class="seller-product-arrow seller-product-arrow-left">
+                <img src="images/icon_arrow_left.svg" alt="">
+            </button>
+
+            <div class="seller-products-list">
+
+                <!-- CARD 1 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tngban_1.svg" alt="Tin đăng">
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>3 ngày trước</span>
+                            <span>11 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Cần Bán Gấp 2 lô full thổ - 4X20M - HẺM OTO - 6 TỶ</h3>
+
+                        <div class="seller-product-status">
+                            <span>2 PN</span>
+                            <span>Đang bán</span>
+                        </div>
+
+                    <div class="seller-price-row">
+                        <p class="seller-product-price">6.000.000.000 đ</p>
+                        <span>75tr/m²</span>
+                        <span>80m²</span>
+                    </div>
+
+                        <div class="seller-product-location">
+                            <span><img src="images/icon_location.svg" alt=""> Quận 1</span>
+                            <small>P. Sài Gòn mới</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tngban_2.svg" alt="Tin đăng">
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Hơn 6 tỷ, Nhà Gò Vấp ,HXH 8m, Gara 2 oto ,5 tầng, 60m2</h3>
+
+                        <div class="seller-product-status">
+                            <span>2 PN</span>
+                            <span>Đang bán</span>
+                        </div>
+                    <div class="seller-price-row">
+                        <p class="seller-product-price">6.000.000.000 đ</p>
+                        <span>100tr/m²</span>
+                        <span>60m²</span>
+                    </div>
+
+                        <div class="seller-product-location">
+                            <span> <img src="images/icon_location.svg" alt="Vị trí"> Quận Gò Vấp</span>
+                            <small>P. Gò Vấp mới</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tngban_3.svg" alt="Tin đăng">
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>3PN, HẺM 4M,60m2, BÁN NHÀ 2 TẦNG, 3PN, HẺM 4M</h3>
+
+                        <div class="seller-product-status">
+                            <span>3 PN</span>
+                            <span>Đang bán</span>
+                        </div>
+                        
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">5.250.000.000 đ</p>
+                            <span>88tr/m²</span>
+                            <span>60m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span><img src="images/icon_location.svg" alt=""> Phường 10</span>
+                            <small>P. Gò Vấp mới</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tngban_4.svg" alt="Tin đăng">
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>4 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Nhà Quang Trung P10 Gò Vấp</h3>
+
+                        <div class="seller-product-status">
+                            <span>3 PN</span>
+                            <span>Đang bán</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">6.500.000.000 đ</p>
+                            <span>91tr/m²</span>
+                            <span>71m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span><img src="images/icon_location.svg" alt="Vị trí"> Phường 10</span>
+                            <small>P. Gò Vấp mới</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tngban_5.svg" alt="Tin đăng">
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>2 ngày trước</span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Bán nhà nhỏ rất đẹp 3,5x6 Trệt 2 Lầu</h3>
+
+                        <div class="seller-product-status">
+                            <span>3 PN</span>
+                            <span>Đang bán</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">959.000.000 đ</p>
+                            <span>69.05tr/m²</span>
+                            <span>21m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span><img src="images/icon_location.svg" alt="Vị trí"> Phường 10</span>
+                            <small>P. Gò Vấp mới</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="seller-product-arrow seller-product-arrow-right">
+                <img src="images/icon_arrow_right.svg" alt="">
+            </button>
+        </div>
+
+        <button class="seller-more-btn">Xem thêm tin đăng</button>
+    </div>
+        </div>
+    </section>
+<!-- SIMILAR PRODUCTS -->
+<section class="seller-products-section similar-products-section">
+    <div class="card seller-products-card">
+        <h2 class="seller-products-title">Tin đăng tương tự</h2>
+
+        <div class="seller-products-wrapper">
+            <button class="seller-product-arrow seller-product-arrow-left">
+                <img src="images/icon_arrow_left.svg" alt="">
+            </button>
+
+            <div class="seller-products-list">
+
+                <!-- CARD 1 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tintt_1.svg" alt="Tin đăng tương tự">
+
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>BÁN GẤP LÔ 4X20M ĐƯỜNG CHIẾN LƯỢC - HẺM</h3>
+
+                        <div class="seller-product-status">
+                            <span>Đất thổ cư</span>
+                            <span>Ngang 4m</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">4.900.000.000 đ</p>
+                            <span>61,25tr/m²</span>
+                            <span>80m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span>
+                                <img src="images/icon_location.svg" alt="">
+                                Phường Bình Trị Đông
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tintt_2.svg" alt="Tin đăng tương tự">
+
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>LÔ ĐẤT HXH đường Trương Phước Phan dt 223m2</h3>
+
+                        <div class="seller-product-status">
+                            <span>Đất thổ cư</span>
+                            <span>Ngang 4m</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">13.000.000.000 đ</p>
+                            <span>58,3tr/m²</span>
+                            <span>223m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span>
+                                <img src="images/icon_location.svg" alt="">
+                                Phường Bình Trị Đông
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tintt_3.svg" alt="Tin đăng tương tự">
+
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                            <span>7 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Bán đất Hướng Lộ 2, kế bệnh viện Bình Tân. 90m2</h3>
+
+                        <div class="seller-product-status">
+                            <span>Đất thổ cư</span>
+                            <span>Ngang 4m</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">5.000.000.000 đ</p>
+                            <span>55,56tr/m²</span>
+                            <span>90m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span>
+                                <img src="images/icon_location.svg" alt="">
+                                Phường Bình Trị Đông
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tintt_4.svg" alt="Tin đăng tương tự">
+
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>5 ngày trước</span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Cần Bán Gấp 2 lô full thổ - 4X20M - HẺM OTO - 6 TỶ</h3>
+
+                        <div class="seller-product-status">
+                            <span>Đất thổ cư</span>
+                            <span>Ngang 4m</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">6.000.000.000 đ</p>
+                            <span>75tr/m²</span>
+                            <span>80m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span>
+                                <img src="images/icon_location.svg" alt="">
+                                Phường Bình Trị Đông
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="seller-product-card">
+                    <div class="seller-product-image">
+                        <img src="images/tintt_5.svg" alt="Tin đăng tương tự">
+
+                        <button class="seller-love-btn">
+                            <img src="images/tngban_iconlove.svg" alt="Yêu thích">
+                        </button>
+
+                        <div class="seller-product-overlay">
+                            <span>4 ngày trước</span>
+                            <span>12 <img src="images/tngban_icon_pic.svg" alt=""></span>
+                        </div>
+                    </div>
+
+                    <div class="seller-product-info">
+                        <h3>Đất mặt tiền kinh doanh sầm uất chợ Dĩ An 1 gần</h3>
+
+                        <div class="seller-product-status">
+                            <span>Đất thổ cư</span>
+                            <span>Ngang 4m</span>
+                        </div>
+
+                        <div class="seller-price-row">
+                            <p class="seller-product-price">6.200.000.000 đ</p>
+                            <span>72,94tr/m²</span>
+                            <span>85m²</span>
+                        </div>
+
+                        <div class="seller-product-location">
+                            <span>
+                                <img src="images/icon_location.svg" alt="">
+                                Phường Bình Trị Đông
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="seller-product-arrow seller-product-arrow-right">
+                <img src="images/icon_arrow_right.svg" alt="">
+            </button>
+        </div>
+
+        <button class="seller-more-btn">Xem thêm tin đăng</button>
+    </div>
+</section>
+
+
+
+
+<footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <h4>Tìm việc làm trên ứng dụng Chợ Tốt</h4>
+                <div class="app-download">
+                    <div class="footer-download-icons">
+                        <img src="images/qr.svg" alt="QR code" class="footer-qr-icon">
+
+                        <div class="footer-store-icons">
+                            <a href="https://apps.apple.com/us/app/ch%E1%BB%A3-t%E1%BB%91t-chuy%C3%AAn-mua-b%C3%A1n-online/id790034666" target="_blank">
+                                <img src="images/app_store.svg" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.chotot.vn" target="_blank">
+                                <img src="images/google_play.svg" alt="Google Play">
+                            </a>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4>Về Việc Làm Tốt</h4>
+                <p>Về Việc Làm Tốt</p>
+                <p>Quy chế hoạt động sàn</p>
+                <p>Chính sách bảo mật</p>
+                <p>Giải quyết tranh chấp</p>
+                <p>Điều khoản sử dụng</p>
+                <p>Tư vấn việc làm</p>
+            </div>
+
+            <div>
+                <h4>Liên kết</h4>
+                <div class="footer-social-icons">
+                    <a href="https://vn.linkedin.com/company/cho-tot" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn">
+                    </a>
+
+                    <a href="https://www.youtube.com/@ChototVN" target="_blank">
+                        <img src="images/youtube.svg" alt="YouTube">
+                    </a>
+
+                    <a href="https://www.facebook.com/chotot.vn" target="_blank">
+                        <img src="images/facebook.svg" alt="Facebook">
+                    </a>
+                </div>
+                <p>Email: trogiup@chotot.vn</p>
+                <p>CSKH: 19003003</p>
+                <p>Địa chỉ: Tầng 18, Toà nhà UOA, số 6 đường Tân Trào, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam</p>
+            </div>
+        </div>
+
+        <div class="bottom-footer">
+            <div class="bottom-footer-text">
+                <span>CÔNG TY TNHH CHỢ TỐT - Người đại diện theo pháp luật: Nguyễn Trọng Tấn;</span>
+                <span>GPDKKD: 0312120782 do Sở KH & ĐT TP.HCM cấp ngày 11/01/2013; Giấy phép hoạt động dịch vụ việc làm: Số 33035/2021/03/SLĐTBXH-VLATLĐ cấp ngày 15/10/2021;</span>
+            </div>
+
+            <img src="images/cert.png" alt="">
+        </div>
+    </footer>
+
+    <!-- LOAN DETAIL MODAL -->
+<div class="loan-modal" id="loanModal">
+    <div class="loan-modal-overlay" id="loanModalOverlay"></div>
+
+    <div class="loan-modal-content">
+        <button class="loan-modal-close" id="loanModalClose" type="button">×</button>
+
+        <h2 class="loan-modal-title">Chi tiết lãi</h2>
+
+        <div class="loan-table-wrap">
+            <table class="loan-detail-table">
+                <thead>
+                    <tr>
+                        <th>Số kỳ trả</th>
+                        <th>Dư nợ đầu kỳ (VNĐ)</th>
+                        <th>Gốc phải trả (VNĐ)</th>
+                        <th>Lãi phải trả (VNĐ)</th>
+                        <th>Gốc + Lãi (VNĐ)</th>
+                    </tr>
+                </thead>
+
+                <tbody id="loanDetailBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- REQUEST MODAL -->
+<div class="request-modal" id="requestModal">
+    <div class="request-modal-overlay" id="requestModalOverlay"></div>
+
+    <div class="request-modal-content">
+
+        <h2 class="request-title">Gửi yêu cầu</h2>
+
+        <div class="request-layout">
+            <div class="request-summary">
+                <div class="request-highlight-card">
+                    <img src="images/icon_home.svg" alt="" class="request-house-icon">
+                    <div class="request-highlight-title" id="requestHighlightTitle">Ước tính trả góp</div>
+                    <div class="request-highlight-price" id="requestHighlightPrice">7.830.366đ</div>
+                    <div class="request-highlight-unit" id="requestHighlightUnit">/tháng</div>
+                    <small id="requestHighlightNote">Lãi suất 7.5%/năm - 20 năm</small>
+                </div>
+
+                <div class="request-detail-box" id="requestDetailBox">
+    <button class="request-detail-head" id="requestDetailToggle" type="button">
+        <span class="request-detail-title-wrap">
+            <img src="images/icon_chitietkhoanvay.svg" alt="" class="request-detail-icon">
+            <span id="requestDetailTitle">Chi tiết khoản vay</span>
+        </span>
+
+        <strong id="requestTotalMini">6.307.287.802đ</strong>
+    </button>
+
+            <div class="request-detail-list" id="requestDetailList">
+                <div class="request-detail-row">
+                    <span id="requestAssetLabel">Giá trị nhà đất</span>
+                    <strong id="requestAssetValue">5.400.000.000đ</strong>
+                </div>
+
+                <div class="request-detail-row request-installment-only">
+                    <span>Trả trước</span>
+                    <strong id="requestDownPayment">4.428.000.000đ</strong>
+                </div>
+
+                <div class="request-detail-row request-installment-only">
+                    <span>Gốc vay</span>
+                    <strong id="requestPrincipal">972.000.000đ</strong>
+                </div>
+
+                <div class="request-detail-row request-installment-only">
+                    <span>Lãi dự kiến</span>
+                    <strong id="requestInterest">907.287.802đ</strong>
+                </div>
+
+                <div class="request-detail-row request-fullpay-only">
+                    <span>Cọc dự kiến (10%)</span>
+                    <strong id="requestDeposit">540.000.000đ</strong>
+                </div>
+
+                <div class="request-detail-row request-fullpay-only">
+                    <span>Thanh toán còn lại</span>
+                    <strong id="requestRemain">4.860.000.000đ</strong>
+                </div>
+            </div>
+        </div>
+                 
+            </div>
+
+            <form class="request-form" id="requestForm">
+                <h3 id="requestFormTitle">Đăng ký tư vấn trả góp</h3>
+
+                <div class="request-form-grid">
+                <div class="request-field">
+                <label>Họ và tên <span>*</span></label>
+                <div class="request-input-wrap">
+                    <img src="images/icon_user_.svg" alt="" class="request-input-icon">
+                    <input type="text" id="requestName" placeholder="Nhập họ và tên">
+                </div>
+                <small class="request-error" id="requestNameError"></small>
+            </div>
+
+            <div class="request-field">
+                <label>Số điện thoại <span>*</span></label>
+                <div class="request-input-wrap">
+                    <img src="images/icon_phone_.svg" alt="" class="request-input-icon">
+                    <input type="text" id="requestPhone" placeholder="Nhập số điện thoại">
+                </div>
+                <small class="request-error" id="requestPhoneError"></small>
+            </div>
+                </div>
+
+                <div class="request-field">
+                    <label>Thời gian dự kiến xem nhà <span>*</span></label>
+
+                    <div class="request-input-wrap request-date-wrap">
+                        <input type="datetime-local" id="requestTime">
+
+                        <button class="request-calendar-btn" id="requestCalendarBtn" type="button" aria-label="Chọn thời gian">
+                            <img src="images/icon_calendar.svg" alt="" class="request-calendar-icon">
+                        </button>
+                    </div>
+
+                    <small class="request-error" id="requestTimeError"></small>
+                </div>
+                <div class="request-field">
+                    <label>Ghi chú</label>
+                    <textarea id="requestNote" placeholder="Nhập ghi chú cho người bán"></textarea>
+                </div>
+
+          <p class="request-note-text">
+    <i>Thông tin chỉ mang tính tham khảo. Kết quả có thể thay đổi tùy theo chính sách ngân hàng và điều kiện giao dịch thực tế. Người bán hoặc đơn vị tư vấn sẽ liên hệ lại để hỗ trợ chi tiết.
+</i></p>
+            </form>
+        </div>
+
+        <div class="request-action-row">
+            <button class="request-cancel-btn" id="requestCancelBtn" type="button">Hủy bỏ</button>
+
+            <button class="primary-btn request-submit-btn request-btn" type="submit" form="requestForm">
+                <img src="images/icon_guiyeucau.svg" alt="" class="request-icon">
+                <span>Gửi yêu cầu</span>
+            </button>
+        </div>
+    </div>
+</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="success-modal" id="successModal">
+    <div class="success-modal-overlay" id="successModalOverlay"></div>
+
+    <div class="success-modal-content">
+        <div class="success-top-bar"></div>
+        <button class="success-close" id="successClose" type="button">×</button>
+
+        <div class="success-icon-wrap">
+            <img src="images/icon_thanhcong.svg" alt="" class="success-icon">
+        </div>
+
+        <h2>Đã gửi yêu cầu thành công</h2>
+    </div>
+</div>
+
+    <!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+    <div class="sticky-inner">
+        <div class="sticky-thumb">
+            <img src="images/main_pic.jpg" alt="Ảnh nhà">
+        </div>
+        <div class="sticky-info">
+            <h3 class="sticky-title">Bán nền đất 4x20m, hẻm 8m</h3>
+            <div class="sticky-meta">
+                <span>67,5 triệu/m²</span>
+                <span>Thổ cư</span>
+                <span>80m²</span>
+            </div>
+        </div>
+        <div class="contact-buttons">
+            <button class="btn-phone" data-full-phone="0356191234"><img src="images/seller_phone.svg" alt="">  Hiện số 035619xxx </button>
+            <button class="btn-chat"><img src="images/seller_chat.svg" alt=""> Chat ngay</button>
+            <button class="btn-zalo">Chat Zalo</button>
+        </div>
+    </div>
+
+    <div class="sticky-tabs">
+        <a href="#property-summary" class="sticky-tab active">Tổng quan</a>
+        <a href="#description" class="sticky-tab">Mô tả</a>
+        <a href="#payment-calculator" class="sticky-tab">Thanh toán</a>
+        <a href="#commitment" class="sticky-tab">Cam kết</a>
+    </div>
+</div>
+<!-- Pop up -->
+<!-- Modal Thông tin chi tiết -->
+<div class="modal-overlay" id="houseInfoModal">
+    <div class="modal-box">
+        <button class="modal-close" id="closeHouseInfoModal">×</button>
+        <h2>Thông tin chi tiết: Bán nền đất 4x20m hẻm 8m Mã Lò</h2>
+
+        <div class="modal-content">
+            <!-- 1. Tổng quan tài sản -->
+            <section>
+                <h3>1. Tổng quan tài sản</h3>
+                <ul>
+                    <li><b>Loại hình:</b> Đây là lô đất nền, phù hợp để xây nhà riêng, biệt thự mini, hoặc đầu tư sinh lời lâu dài.</li>
+                    <li><b>Diện tích:</b> 80 m², chiều rộng 4m x dài 20m, đủ xây nhà 1–2 tầng, sân trước/sân sau nhỏ.</li>
+                    <li><b>Giá/m²:</b> 67,50 triệu/m², nằm trong mức giá thị trường khu vực.</li>
+                    <li><b>Đường/hẻm:</b> Hẻm rộng 8m, thuận tiện cho xe ô tô, xe máy, an toàn trẻ nhỏ, dễ tiếp cận dịch vụ xung quanh.</li>
+                </ul>
+            </section>
+
+            <!-- 2. Công năng sử dụng -->
+            <section>
+                <h3>2. Công năng sử dụng</h3>
+                <ul>
+                    <li>Phòng ngủ: 2 phòng đủ diện tích cho giường đôi và tủ quần áo.</li>
+                    <li>WC: 2 phòng vệ sinh hiện đại, tiện nghi cho mọi thành viên.</li>
+                    <li>Phòng khách: rộng rãi, thiết kế mở, thuận tiện tiếp khách và sinh hoạt chung.</li>
+                    <li>Bếp: khu bếp riêng, bố trí tủ bếp và thiết bị nấu ăn, hạn chế mùi lan sang phòng khách.</li>
+                    <li>Ban công: đón sáng tự nhiên, thông gió tốt, thích hợp trồng cây hoặc đặt bàn ghế thư giãn.</li>
+                    <li>Chỗ để xe: không gian để xe máy trong nhà, an toàn và tiện lợi.</li>
+                </ul>
+            </section>
+
+            <!-- 3. Pháp lý -->
+            <section>
+                <h3>3. Pháp lý</h3>
+                <ul>
+                    <li>Sổ: Lô đất sở hữu sổ hồng riêng, minh bạch.</li>
+                    <li>Loại đất: Thổ cư, được phép xây dựng, an toàn pháp lý.</li>
+                    <li>Quy hoạch: Không vướng, xây dựng/cải tạo theo nhu cầu.</li>
+                    <li>Giao dịch: Công chứng sang tên ngay, an tâm quyền sở hữu.</li>
+                </ul>
+            </section>
+
+            <!-- 4. Tiện nghi và nội thất -->
+            <section>
+                <h3>4. Tiện nghi và nội thất</h3>
+                <ul>
+                    <li>Nội thất đầy đủ, sẵn sàng dọn vào ở.</li>
+                    <li>Có thang máy (nếu nhà nhiều tầng), thuận tiện người cao tuổi và vận chuyển đồ.</li>
+                    <li>Máy lạnh & máy nước nóng, tiện nghi sinh hoạt quanh năm.</li>
+                    <li>Tủ bếp, kệ bếp bố trí sẵn, thuận tiện nấu ăn và lưu trữ.</li>
+                    <li>Dọn vào ở ngay, nhà hoàn thiện kỹ thuật.</li>
+                </ul>
+            </section>
+
+            <!-- 5. Vị trí và môi trường -->
+            <section>
+                <h3>5. Vị trí và môi trường</h3>
+                <ul>
+                    <li>Khu dân cư hiện hữu, an ninh tốt, phù hợp gia đình và trẻ nhỏ.</li>
+                    <li>Hẻm xe hơi 8m, thuận tiện di chuyển.</li>
+                    <li>Gần tiện ích dân sinh: trường học, chợ, siêu thị, ngân hàng, trung tâm thương mại.</li>
+                    <li>Kết nối nhanh trung tâm thành phố.</li>
+                    <li>An ninh, ít ngập nước, an toàn, hạn chế rủi ro thiên tai.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="pty.js"></script>
+
+</body>
+</html>
