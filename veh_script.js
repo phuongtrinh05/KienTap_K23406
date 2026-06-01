@@ -933,4 +933,42 @@ document.addEventListener("DOMContentLoaded", function () {
         next.onclick = () => track.parentElement.scrollBy({left: 194, behavior: 'smooth'});
         prev.onclick = () => track.parentElement.scrollBy({left: -194, behavior: 'smooth'});
     });
+    // Bình luận ở sidebar xe
+    const vehCommentInput = document.getElementById("veh-comment-input");
+    const vehCommentSend = document.getElementById("veh-comment-send");
+    const vehCommentList = document.getElementById("veh-comment-list");
+    const vehEmptyComment = document.getElementById("veh-empty-comment");
+
+    function addVehComment() {
+        if (!vehCommentInput || !vehCommentList) return;
+
+        const text = vehCommentInput.value.trim();
+        if (text === "") return;
+
+        const commentItem = document.createElement("div");
+        commentItem.className = "veh-comment-item";
+        commentItem.innerHTML = `
+            <strong>Bạn</strong>
+            <span>${text}</span>
+        `;
+
+        vehCommentList.appendChild(commentItem);
+        vehCommentInput.value = "";
+
+        if (vehEmptyComment) {
+            vehEmptyComment.style.display = "none";
+        }
+    }
+
+    if (vehCommentSend) {
+        vehCommentSend.addEventListener("click", addVehComment);
+    }
+
+    if (vehCommentInput) {
+        vehCommentInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                addVehComment();
+            }
+        });
+    }
 });
